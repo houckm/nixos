@@ -1,0 +1,26 @@
+# Build results
+result
+result-*
+
+# Hardware-specific (you might want to keep this actually)
+# hosts/*/hardware-configuration.nix
+
+# Secrets (if not using proper secret management)
+*.key
+*.pem
+secrets/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
