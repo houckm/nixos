@@ -37,6 +37,7 @@
       
       # Utilities
       which-key
+      general
       
       # LSP & Completion
       lsp-mode

@@ -21,8 +21,8 @@ main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ ewmhFullscreen $ ewmh $ docks $ def
         { terminal    = "alacritty"
-        , modMask     = controlMask  -- Super key
-        --, modMask     = mod4Mask  -- Super key
+        --, modMask     = controlMask  -- Super key
+        , modMask     = mod1Mask  -- Super key
         , borderWidth = 2
         , normalBorderColor  = "#3b4252"
         , focusedBorderColor = "#88c0d0"

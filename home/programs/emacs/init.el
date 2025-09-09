@@ -41,16 +41,29 @@
 ;; --------------------
 ;; Dashboard
 ;; --------------------
+
 (use-package dashboard
-  :config
-  (setq dashboard-startup-banner 'official
-        dashboard-items '((recents  . 5)
-                          (projects . 5)
-                          (agenda   . 5))
-        dashboard-center-content t
-        dashboard-set-heading-icons t
-        dashboard-set-file-icons t)
-  (dashboard-setup-startup-hook))
+ :config
+ (setq dashboard-startup-banner 'official
+       dashboard-items '((recents  . 5)
+                        (projects . 5)
+                        (agenda   . 5))
+       dashboard-center-content t
+       dashboard-vertically-center-content t
+       dashboard-set-heading-icons t
+       dashboard-set-file-icons t
+       dashboard-page-separator "\n\f\n"
+       dashboard-set-init-info t
+       dashboard-display-icons-p t
+       dashboard-icon-type 'nerd-icons
+       dashboard-projects-backend 'projectile)
+ 
+ ;; Force widget centering
+ (add-hook 'dashboard-mode-hook
+           (lambda ()
+             (setq-local tab-width 1)))
+ 
+ (dashboard-setup-startup-hook))
 
 ;; --------------------
 ;; Evil Mode + Surround + Avy

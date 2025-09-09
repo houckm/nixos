@@ -98,8 +98,7 @@ nixos-config/
 ## Key Features
 
 ### Aliases and Shortcuts
-- `nrs` - Rebuild NixOS system configuration
-- `hms` - Rebuild home-manager configuration  
+- `switch` - Rebuild NixOS system configuration
 - `v`, `vi`, `vim` - All launch Neovim
 - `gs`, `ga`, `gc`, `gp`, `gl` - Git shortcuts
 
@@ -124,7 +123,7 @@ This configuration is set up for my specific hardware. Key considerations:
 ### Adding New Programs
 1. Create a new `.nix` file in `home/programs/`
 2. Add the import to `home/hunter.nix`
-3. Rebuild with `hms`
+3. Rebuild with `switch`
 
 ### System-Level Changes
 1. Edit `hosts/spaceship/configuration.nix`
@@ -143,7 +142,7 @@ Currently using plaintext configuration. Consider implementing:
 nix flake update
 
 # Rebuild system
-nrs
+switch
 
 # Clean old generations
 sudo nix-collect-garbage -d

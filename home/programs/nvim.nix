@@ -29,11 +29,13 @@
         p.json
         p.lua
         p.markdown
+        p.markdown_inline
         p.nix
         p.python
         p.rust
-        p.typescript
         p.yaml
+        p.vim
+        p.vimdoc
       ]))
       
       # LSP & completion
@@ -53,14 +55,22 @@
       lualine-nvim
       
       # Color scheme
-      catppuccin-nvim
+      nord-nvim
       
-      # Utilities
+      # Markdown support
+      markdown-preview-nvim
+      render-markdown-nvim
+      
+      # Additional useful plugins
       comment-nvim
       nvim-autopairs
       indent-blankline-nvim
       which-key-nvim
       nvim-surround
+      toggleterm-nvim
+      nvim-colorizer-lua
+      trouble-nvim
+      oil-nvim
     ];
     
     extraLuaConfig = ''
@@ -80,15 +90,13 @@
       vim.opt.signcolumn = "yes"
       vim.opt.updatetime = 50
       vim.opt.termguicolors = true
+      vim.opt.conceallevel = 2  -- For markdown rendering
       
       -- Set leader key
       vim.g.mapleader = " "
       
-      -- Colorscheme
-      require("catppuccin").setup({
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
-      })
-      vim.cmd.colorscheme "catppuccin"
+      -- Nord colorscheme
+      vim.cmd.colorscheme "nord"
       
       -- Treesitter
       require'nvim-treesitter.configs'.setup {
@@ -115,7 +123,15 @@
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
       
-      -- Nvim-tree
+      -- Oil (better file explorer)
+      require("oil").setup({
+        view_options = {
+          show_hidden = true,
+        },
+      })
+      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      
+      -- Nvim-tree (keeping as alternative)
       require("nvim-tree").setup({
         sort_by = "case_sensitive",
         view = {
@@ -125,7 +141,7 @@
           group_empty = true,
         },
         filters = {
-          dotfiles = true,
+          dotfiles = false,
         },
       })
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
@@ -134,8 +150,8 @@
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       
-      -- Enable some language servers
-      local servers = { 'nil_ls', 'pyright', 'ts_ls', 'rust_analyzer' }
+      -- Enable language servers (removed typescript)
+      local servers = { 'nil_ls', 'pyright', 'rust_analyzer', 'marksman' }
       for _, lsp in ipairs(servers) do
         lspconfig[lsp].setup {
           capabilities = capabilities,
@@ -185,13 +201,43 @@
         })
       })
       
+      -- Markdown rendering
+      require('render-markdown').setup({
+        heading = {
+          enabled = true,
+          sign = true,
+          icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
+        },
+        code = {
+          enabled = true,
+          sign = false,
+          style = 'full',
+          position = 'left',
+          language_pad = 0,
+          disable_background = { 'diff' },
+        },
+        dash = {
+          enabled = true,
+          icon = '─',
+          width = 'full',
+        },
+        bullet = {
+          enabled = true,
+          icons = { '●', '○', '◆', '◇' },
+        },
+      })
+      
+      -- Markdown preview
+      vim.keymap.set('n', '<leader>mp', ':MarkdownPreview<CR>', { silent = true })
+      vim.keymap.set('n', '<leader>ms', ':MarkdownPreviewStop<CR>', { silent = true })
+      
       -- Gitsigns
       require('gitsigns').setup()
       
       -- Lualine
       require('lualine').setup {
         options = {
-          theme = 'catppuccin'
+          theme = 'nord'
         }
       }
       
@@ -212,6 +258,25 @@
       -- Surround
       require("nvim-surround").setup()
       
+      -- Terminal
+      require("toggleterm").setup({
+        size = 20,
+        open_mapping = [[<c-\>]],
+        hide_numbers = true,
+        shade_terminals = true,
+        direction = 'float',
+        float_opts = {
+          border = 'curved',
+        },
+      })
+      
+      -- Colorizer for hex colors
+      require('colorizer').setup()
+      
+      -- Trouble for diagnostics
+      require("trouble").setup()
+      vim.keymap.set("n", "<leader>tt", function() require("trouble").toggle() end)
+      
       -- General keymaps
       vim.keymap.set('n', '<leader>w', ':w<CR>', { silent = true })
       vim.keymap.set('n', '<leader>q', ':q<CR>', { silent = true })
@@ -227,6 +292,12 @@
       vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { silent = true })
       vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { silent = true })
       vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { silent = true })
+      
+      -- Clear search highlighting
+      vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>', { silent = true })
+      
+      -- Quick save and exit
+      vim.keymap.set('n', '<leader><leader>', '<cmd>w<cr>', { silent = true })
     '';
   };
   
@@ -235,11 +306,12 @@
     # Language servers
     nil              # Nix LSP
     pyright          # Python LSP
-    typescript-language-server  # Moved out of nodePackages too
-    rust-analyzer
+    rust-analyzer    # Rust LSP
+    marksman         # Markdown LSP
     
     # Additional tools
     ripgrep          # Required for telescope live_grep
     fd               # Better find, used by telescope
+    glow             # Terminal markdown renderer
   ];
 }
