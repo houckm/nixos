@@ -24,7 +24,7 @@
       gl = "git pull";
       
       # NixOS shortcuts
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      switch = "sudo nixos-rebuild switch --flake ~/nixos-config";
     };
     
     history = {

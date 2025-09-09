@@ -33,7 +33,7 @@
 ;; Themes & Modeline
 ;; --------------------
 (use-package doom-themes
-  :config (load-theme 'doom-one t))
+  :config (load-theme 'doom-nord-light t))
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
@@ -68,14 +68,30 @@
   :bind ("C-:" . avy-goto-char))
 
 ;; --------------------
+;; General
+;; --------------------
+(use-package general
+  :config
+  (general-create-definer my-leader-def
+    :states '(normal visual insert emacs)
+    :keymaps 'override
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+  
+  (my-leader-def
+    "." 'helm-find-files
+    "b" 'helm-mini
+    "x" 'helm-M-x
+    "s" 'helm-occur
+    "pf" 'helm-projectile-find-file
+    "pp" 'helm-projectile-switch-project))
+
+
+;; --------------------
 ;; Helm + Projectile
 ;; --------------------
 (use-package helm
-  :init (require 'helm-config)
-  :bind (("M-x"     . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x b"   . helm-mini)
-         ("C-s"     . helm-occur))
+  :init
   :config (helm-mode 1))
 
 (use-package projectile

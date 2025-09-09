@@ -202,7 +202,7 @@
   };
 
   # Keep system-level SSH security in configuration.nix
-  security.pam.enableSSHAgentAuth = true;
+  security.pam.sshAgentAuth.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
