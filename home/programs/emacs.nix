@@ -1,69 +1,67 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs;  # or emacs29 for X11
-    
+    package = pkgs.emacs;
     extraPackages = epkgs: with epkgs; [
-      # Core packages
-      use-package
-      
-      # Evil mode (if you want Vim bindings)
-      evil
-      evil-collection
-      
-      # Completion framework
-      vertico
-      consult
-      orderless
-      marginalia
-      corfu
-      cape
-      
-      # UI enhancements
+      # Themes & UI
       doom-themes
       doom-modeline
-      all-the-icons
-      which-key
-      helpful
+      dashboard
       
-      # Project management
+      # Evil mode
+      evil
+      evil-surround
+      
+      # Navigation
+      avy
+      helm
       projectile
+      helm-projectile
+      treemacs
+      
+      # Org mode ecosystem
+      org
+      org-roam
+      org-journal
+      org-bullets
+      org-super-agenda
+      
+      # Focus mode
+      writeroom-mode
+      olivetti
+      
+      # Git
       magit
       
-      # Language support
-      nix-mode
-      markdown-mode
+      # Utilities
+      which-key
+      
+      # LSP & Completion
+      lsp-mode
+      corfu
+      cape
+      kind-icon
+      yasnippet
+      
+      # Language modes
       yaml-mode
-      json-mode
-      web-mode
+      nix-mode
       
-      # Org mode enhancements
-      org-roam
-      org-modern
-      
-      # Quality of life
-      rainbow-delimiters
-      highlight-indent-guides
+      # Editing
+      smartparens
       undo-tree
+      
+      # Terminal
+      vterm
+      vterm-toggle
     ];
   };
+
+  # Copy your init.el to the right location
+  home.file.".emacs.d/init.el".source = ./emacs/init.el;
   
-  # Link our config files
-  home.file = {
-    ".config/emacs/init.el".source = ./emacs/init.el;
-    ".config/emacs/core" = {
-      source = ./emacs/core;
-      recursive = true;
-    };
-    ".config/emacs/langs" = {
-      source = ./emacs/langs;
-      recursive = true;
-    };
-    ".config/emacs/tools" = {
-      source = ./emacs/tools;
-      recursive = true;
-    };
-  };
+  # Optional: Create snippets directory structure
+  home.file.".emacs.d/snippets/.keep".text = "";
 }

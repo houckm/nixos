@@ -25,7 +25,6 @@
       
       # NixOS shortcuts
       nrs = "sudo nixos-rebuild switch --flake ~/nixos-config";
-      hms = "home-manager switch --flake ~/nixos-config";
     };
     
     history = {
