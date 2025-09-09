@@ -16,7 +16,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.hunter = import ./home/hunter.nix;
+          home-manager.users.hunter = import ./home/home.nix;
         }
       ];
     };
