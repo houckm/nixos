@@ -19,6 +19,7 @@
      org-bullets
      
      # Completion & Navigation
+     company
      corfu
      cape
      vertico
