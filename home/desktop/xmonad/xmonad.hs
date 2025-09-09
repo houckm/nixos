@@ -38,7 +38,7 @@ main = do
                           , ppHiddenNoWindows = xmobarColor "#3b4252" ""
                           , ppSep = " | "
                           }
-        , workspaces = ["1:term", "2:web", "3:code", "4:chat", "5:media", "6:virt", "7", "8", "9"]
+        , workspaces = ["1:term", "2:web", "3:emacs", "4:chat", "5:media", "6:virt", "7", "8", "discord"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 
@@ -72,7 +72,7 @@ myStartupHook = do
 myKeys =
     [ -- Launching programs
       ("M-<Return>", spawn "alacritty")
-    , ("M-p", spawn "dmenu_run -fn 'JetBrainsMono Nerd Font-12' -nb '#2e3440' -nf '#d8dee9' -sb '#88c0d0' -sf '#2e3440'")
+    , ("M-p", spawn "dmenu_run -fn 'JetBrainsMono Nerd Font-10' -nb '#2e3440' -nf '#d8dee9' -sb '#88c0d0' -sf '#2e3440'")
     , ("M-S-<Return>", spawn "firefox")
     
     -- Window management

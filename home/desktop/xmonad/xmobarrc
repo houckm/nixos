@@ -1,4 +1,4 @@
-Config { font = "JetBrainsMono Nerd Font 14"
+Config { font = "JetBrainsMono Nerd Font 12"
        , additionalFonts = []
        , borderColor = "#3b4252"
        , border = TopB
@@ -45,5 +45,5 @@ Config { font = "JetBrainsMono Nerd Font 14"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %cpu% | %memory% | %disku% | %wlp13s0% | %KRVS% | %date% "
+       , template = "%StdinReader% }{ %cpu% | %memory% | %disku% | %wlp13s0% | %date% "
        }

@@ -308,6 +308,8 @@
     pyright          # Python LSP
     rust-analyzer    # Rust LSP
     marksman         # Markdown LSP
+    ansible-language-server  # Ansible LSP
+    yaml-language-server     # YAML LSP
     
     # Additional tools
     ripgrep          # Required for telescope live_grep

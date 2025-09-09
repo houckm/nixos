@@ -34,6 +34,10 @@
     kubectl
     terraform
     ansible
+    nil
+    #nodePackages.pyright
+    yaml-language-server
+    libvterm
 
     # System utilities
     btop
