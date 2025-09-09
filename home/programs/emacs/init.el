@@ -18,6 +18,18 @@
 (global-auto-revert-mode 1)
 
 ;; --------------------
+;; Font Configuration
+;; --------------------
+(set-face-attribute 'default nil
+                    :family "JetBrains Mono Nerd Font"
+                    :height 140) ; 140 = 14pt (height is in 1/10 points)
+
+;; Set font for variable pitch mode (used in org-mode)
+(set-face-attribute 'variable-pitch nil
+                    :family "JetBrains Mono Nerd Font"
+                    :height 140)
+
+;; --------------------
 ;; Themes & Modeline
 ;; --------------------
 (use-package doom-themes
