@@ -22,7 +22,7 @@ nixos-config/
 │       ├── configuration.nix    # System configuration
 │       └── hardware-configuration.nix  # Hardware-specific settings
 └── home/
-    ├── hunter.nix              # Main home-manager configuration
+    ├── home.nix              # Main home-manager configuration
     └── programs/               # Application configurations
         ├── alacritty.nix       # Terminal emulator
         ├── emacs.nix           # Emacs configuration
@@ -122,7 +122,7 @@ This configuration is set up for my specific hardware. Key considerations:
 
 ### Adding New Programs
 1. Create a new `.nix` file in `home/programs/`
-2. Add the import to `home/hunter.nix`
+2. Add the import to `home/home.nix`
 3. Rebuild with `switch`
 
 ### System-Level Changes
