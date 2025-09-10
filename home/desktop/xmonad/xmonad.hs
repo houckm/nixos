@@ -38,7 +38,7 @@ main = do
                           , ppHiddenNoWindows = xmobarColor "#3b4252" ""
                           , ppSep = " | "
                           }
-        , workspaces = ["1:term", "2:web", "3:emacs", "4:chat", "5:media", "6:virt", "7", "8", "discord"]
+        , workspaces = ["1:term", "2:web", "3:emacs", "4:chat", "5:media", "6:virt", "7", "8:games", "9:discord"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 

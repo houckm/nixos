@@ -35,9 +35,12 @@
     terraform
     ansible
     nil
-    #nodePackages.pyright
     yaml-language-server
     libvterm
+    haskell-language-server
+    ghc
+    cabal-install
+
 
     # System utilities
     btop
@@ -56,6 +59,9 @@
     # Browsers
     firefox
     google-chrome
+
+    # misc
+    discord
 
 
     # Fonts

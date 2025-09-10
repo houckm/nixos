@@ -36,11 +36,13 @@
      nix-mode
      python-mode
      yaml-mode
+     haskell-mode
      
      # LSP
      lsp-mode
      lsp-ui
      lsp-pyright
+     lsp-haskell
      
      # Org
      org
@@ -215,12 +217,26 @@
      (use-package magit
        :bind ("C-x g" . magit-status))
      
+     ;; Haskell
+     (use-package haskell-mode
+       :hook ((haskell-mode . turn-on-haskell-indentation)
+              (haskell-mode . lsp))
+       :bind (:map haskell-mode-map
+              ("C-c C-l" . haskell-process-load-file)
+              ("C-c C-t" . haskell-process-do-type)
+              ("C-c C-i" . haskell-process-do-info)))
+     
      ;; LSP
      (use-package lsp-mode
        :hook ((nix-mode . lsp)
               (python-mode . lsp)
-              (yaml-mode . lsp))
+              (yaml-mode . lsp)
+              (haskell-mode . lsp)
+              (haskell-literate-mode . lsp))
        :commands lsp)
+     
+     (use-package lsp-haskell
+       :after lsp-mode)
      
      ;; Which-key
      (use-package which-key
