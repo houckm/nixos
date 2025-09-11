@@ -40,6 +40,7 @@
     haskell-language-server
     ghc
     cabal-install
+    claude-code
 
 
     # System utilities

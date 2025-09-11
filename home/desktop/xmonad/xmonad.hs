@@ -38,7 +38,7 @@ main = do
                           , ppHiddenNoWindows = xmobarColor "#3b4252" ""
                           , ppSep = " | "
                           }
-        , workspaces = ["1:term", "2:web", "3:emacs", "4:chat", "5:media", "6:virt", "7", "8:games", "9:discord"]
+        , workspaces = ["1:term", "2:chrome", "3:emacs", "4:chat", "5:media", "6:virt", "7:qbittorent", "8:games", "9:discord"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 
@@ -53,9 +53,9 @@ myLayout = avoidStruts
 
 -- Window management rules
 myManageHook = composeAll
-    [ className =? "Firefox"        --> doShift "2:web"
-    , className =? "Google-chrome"  --> doShift "2:web"
-    , className =? "Emacs"          --> doShift "3:code"
+    [ className =? "Google-chrome"  --> doShift "2:chrome"
+    , className =? "Emacs"          --> doShift "3:emacs"
+    , className =? "Discord"          --> doShift "9:discord"
     , className =? "Virt-manager"   --> doShift "6:virt"
     , className =? "Gimp"           --> doFloat
     , isFullscreen                  --> doFullFloat
