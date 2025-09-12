@@ -39,6 +39,9 @@
   # Enable Bluetooth manager service
   services.blueman.enable = true;
 
+  # mullvad-vpn
+  services.mullvad-vpn.enable = true;
+
   # Steam
   programs.steam = {
     enable = true;

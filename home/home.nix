@@ -32,18 +32,20 @@
     docker-compose
     docker
     kubectl
+
+    # IAC
     terraform
     ansible
-    nil
+
+    nil # nix lsp
     yaml-language-server
-    libvterm
     haskell-language-server
     ghc
     cabal-install
     claude-code
 
 
-    # System utilities
+    # System monitoring & performance
     btop
     fd
     ripgrep
@@ -56,14 +58,24 @@
     nmap
     tcpdump
     wireshark
+    dig
+    netcat-gnu
+    iperf3
+
+    # terminal & shell enhancement
+    libvterm
 
     # Browsers
     firefox
     google-chrome
 
-    # misc
+    # communication
     discord
 
+
+    # torrents
+    mullvad-vpn
+    qbittorrent 
 
     # Fonts
     nerd-fonts.jetbrains-mono

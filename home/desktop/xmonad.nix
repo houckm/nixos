@@ -20,7 +20,7 @@
 
   # XMonad-related packages
   home.packages = with pkgs; [
-    dmenu           # Application launcher (or keep rofi if you prefer)
+    dmenu           # Application launcher
     nitrogen        # Wallpaper setter
     picom           # Compositor
     dunst           # Notification daemon
@@ -29,6 +29,7 @@
     xdotool         # Window manipulation
     xorg.xrandr     # Display configuration
     arandr          # GUI for xrandr
+    trayer          # System tray
   ];
 
   # Services that work well with XMonad
@@ -38,7 +39,6 @@
     fadeDelta = 5;
     shadow = true;
     shadowOpacity = 0.75;
-    # Add any other compositor settings you like
   };
 
   services.dunst = {
@@ -64,4 +64,6 @@
       };
     };
   };
+
+  # Note: trayer is started via XMonad startup hook instead of service
 }
