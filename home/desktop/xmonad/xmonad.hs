@@ -21,9 +21,8 @@ main = do
     xmproc <- spawnPipe "xmobar"
     xmonad $ ewmhFullscreen $ ewmh $ docks $ def
         { terminal    = "alacritty"
-        --, modMask     = controlMask  -- Super key
-        , modMask     = mod1Mask  -- Super key
-        , borderWidth = 2
+        , modMask     = mod1Mask
+        , borderWidth = 4
         , normalBorderColor  = "#3b4252"
         , focusedBorderColor = "#88c0d0"
         , layoutHook  = myLayout
@@ -46,7 +45,7 @@ main = do
 myLayout = avoidStruts 
          $ smartBorders 
          $ toggleLayouts Full
-         $ spacing 5 
+         $ spacing 8 
          $ (tiled ||| Mirror tiled ||| Grid)
   where
     tiled = renamed [Replace "Tall"] $ ResizableTall 1 (3/100) (1/2) []
@@ -73,7 +72,7 @@ myKeys =
     [ -- Launching programs
       ("M-<Return>", spawn "alacritty")
     , ("M-p", spawn "dmenu_run -fn 'JetBrainsMono Nerd Font-10' -nb '#2e3440' -nf '#d8dee9' -sb '#88c0d0' -sf '#2e3440'")
-    , ("M-S-<Return>", spawn "firefox")
+    , ("M-S-<Return>", spawn "Google-chrome")
     
     -- Window management
     , ("M-S-q", kill)
