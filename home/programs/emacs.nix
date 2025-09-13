@@ -127,7 +127,7 @@
      ;; Theme
      (use-package doom-themes
        :config
-       (load-theme 'doom-nord-light t)
+       (load-theme 'doom-nord t)
        (doom-themes-org-config))
      
      (use-package doom-modeline
