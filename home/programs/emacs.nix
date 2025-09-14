@@ -31,6 +31,7 @@
      
      # Terminal
      vterm
+     vterm-toggle
      
      # Languages
      nix-mode
@@ -108,12 +109,15 @@
        :bind-keymap
        ("C-c p" . projectile-command-map))
      
-     ;; vterm
-     (use-package vterm
-       :bind ("C-c t" . vterm)
-       :custom
-       (vterm-max-scrollback 10000))
-     
+    (use-package vterm-toggle
+      :bind (("C-\\" . vterm-toggle)
+            ("C-c t" . vterm-toggle))
+      :custom
+      (vterm-toggle-fullscreen-p nil)
+      (vterm-toggle-scope 'project)
+      (vterm-toggle-cd-auto-create-buffer t))
+
+
      ;; Dashboard
      (use-package dashboard
        :config
