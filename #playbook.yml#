@@ -1,0 +1,8 @@
+---
+- name: Playbook 1
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Setting up a server
+      ansible.builtin.file:

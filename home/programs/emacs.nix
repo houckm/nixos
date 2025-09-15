@@ -25,6 +25,8 @@
      vertico
      consult
      marginalia
+     yasnippet
+     yasnippet-snippets
      embark
      embark-consult
      projectile
@@ -38,6 +40,7 @@
      python-mode
      yaml-mode
      haskell-mode
+     ansible
      
      # LSP
      lsp-mode
@@ -50,6 +53,7 @@
      org-roam
      org-roam-ui
      org-journal
+     ob-nix
      
      # Git
      magit
@@ -159,6 +163,30 @@
        :bind (("C-c a" . org-agenda)
               ("C-c c" . org-capture)))
      
+
+     ;; Org-babel configuration
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((emacs-lisp . t)
+        (python . t)
+        (shell . t)
+        (haskell . t)
+        (nix . t)))
+
+     ;; Add syntax highlighting for YAML and Ansible (non-executable)
+     (add-to-list 'org-src-lang-modes '("yaml" . yaml))
+     (add-to-list 'org-src-lang-modes '("ansible" . yaml)) 
+
+     ;; Don't prompt before evaluating code blocks
+     (setq org-confirm-babel-evaluate nil)
+
+     ;; Syntax highlighting in code blocks
+     (setq org-src-fontify-natively t)
+     (setq org-src-tab-acts-natively t)
+
+     ;; Better code block templates
+     (require 'org-tempo) 
+
      ;; Org bullets
      (use-package org-bullets
        :hook (org-mode . org-bullets-mode))
@@ -220,15 +248,24 @@
      ;; Magit
      (use-package magit
        :bind ("C-x g" . magit-status))
+
+
+     (use-package yasnippet
+       :config
+       (yas-global-mode 1)
+       (yas-reload-all))
+
+     (use-package yasnippet-snippets
+       :after yasnippet) 
+    
+     (use-package ansible
+       :hook (yaml-mode . ansible))
+
      
      ;; Haskell
      (use-package haskell-mode
-       :hook ((haskell-mode . turn-on-haskell-indentation)
+       :hook (haskell-mode . turn-on-haskell-indentation)
               (haskell-mode . lsp))
-       :bind (:map haskell-mode-map
-              ("C-c C-l" . haskell-process-load-file)
-              ("C-c C-t" . haskell-process-do-type)
-              ("C-c C-i" . haskell-process-do-info)))
      
      ;; LSP
      (use-package lsp-mode
@@ -241,7 +278,16 @@
      
      (use-package lsp-haskell
        :after lsp-mode)
-     
+       
+
+     ;; C/C++ Development
+     (use-package cc-mode
+        :hook ((c-mode . lsp)
+               (c++-mode . lsp))
+      :custom
+      (c-default-style "linux")
+      (c-basic-offset 4))
+
      ;; Which-key
      (use-package which-key
        :config (which-key-mode))

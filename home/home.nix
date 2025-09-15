@@ -43,6 +43,10 @@
     ghc
     cabal-install
     claude-code
+    clang-tools
+    gdb
+    gcc
+    cmake
 
 
     # System monitoring & performance
@@ -53,6 +57,7 @@
     bat
     eza
     blueman
+    zoxide
     
     # Network tools
     nmap

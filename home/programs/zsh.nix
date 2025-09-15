@@ -14,6 +14,8 @@
       grep = "rg";
       cat = "bat";
       v = "nvim";
+      cd = "z";
+      cdi = "zi";
       cls = "clear";
       
       # Git shortcuts
@@ -43,6 +45,7 @@
         "colored-man-pages"
         "extract"
         "command-not-found"
+        "ansible"
       ];
     };
     
@@ -51,7 +54,7 @@
       mkcd() {
         mkdir -p "$1" && cd "$1"
       }
-      
+      eval "$(zoxide init zsh)" 
       # Set editor
       export EDITOR="nvim"
       export VISUAL="nvim"
