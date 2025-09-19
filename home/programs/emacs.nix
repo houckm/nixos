@@ -25,8 +25,6 @@
      vertico
      consult
      marginalia
-     yasnippet
-     yasnippet-snippets
      embark
      embark-consult
      projectile
@@ -135,7 +133,7 @@
      ;; Theme
      (use-package doom-themes
        :config
-       (load-theme 'doom-nord t)
+       (load-theme 'leuven t)
        (doom-themes-org-config))
      
      (use-package doom-modeline
@@ -250,14 +248,6 @@
        :bind ("C-x g" . magit-status))
 
 
-     (use-package yasnippet
-       :config
-       (yas-global-mode 1)
-       (yas-reload-all))
-
-     (use-package yasnippet-snippets
-       :after yasnippet) 
-    
      (use-package ansible
        :hook (yaml-mode . ansible))
 
