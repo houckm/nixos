@@ -47,6 +47,7 @@
     gdb
     gcc
     cmake
+    kiro
 
 
     # System monitoring & performance

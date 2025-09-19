@@ -25,8 +25,6 @@
      vertico
      consult
      marginalia
-     yasnippet
-     yasnippet-snippets
      embark
      embark-consult
      projectile
@@ -90,6 +88,7 @@
      
      (use-package consult
        :bind (("C-s" . consult-line)
+              ("C-S-s" . consult-line-multi)
               ("C-x b" . consult-buffer)
               ("M-y" . consult-yank-pop)
               ("C-c f" . consult-find)
@@ -135,7 +134,7 @@
      ;; Theme
      (use-package doom-themes
        :config
-       (load-theme 'doom-nord t)
+       (load-theme 'leuven t)
        (doom-themes-org-config))
      
      (use-package doom-modeline
@@ -205,39 +204,39 @@
        (org-roam-capture-templates
         '(("j" "Journal" plain "* %?\nEntered on %U\n  %i\n  %a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :journal:\n")
+                              "#+title: ''${title}\n#+filetags: :journal:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)
           ("m" "Meeting" plain "* %? :meeting:\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :meeting:\n")
+                              "#+title: ''${title}\n#+filetags: :meeting:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)
           ("a" "Ansible Idea" plain "* %? :ansible:\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :ansible:\n")
+                              "#+title: ''${title}\n#+filetags: :ansible:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)
           ("n" "Note" plain "* %? :note:\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :note:\n")
+                              "#+title: ''${title}\n#+filetags: :note:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)
           ("t" "Todo" plain "* TODO %?\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :todo:\n")
+                              "#+title: ''${title}\n#+filetags: :todo:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)
           ("p" "Project Idea" plain "* %? :project:\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :project:\n")
+                              "#+title: ''${title}\n#+filetags: :project:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)
           ("b" "Bookmark / Link" plain "* %? :bookmark:\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :bookmark:\n")
+                              "#+title: ''${title}\n#+filetags: :bookmark:\n:PROPERTIES:\n:CREATED: %U\n:ROAM_REFS: %?\n:END:\n")
            :unnarrowed t)
           ("r" "Reading Note" plain "* %? :reading:\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :reading:\n")
+                              "#+title: ''${title}\n#+filetags: :reading:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)
           ("c" "Code Snippet" plain "* %? :code:\n%U\n%a"
            :target (file+head "%<%Y%m%d%H%M%S>-''${slug}.org"
-                              "#+title: ''${title}\n#+filetags: :code:\n")
+                              "#+title: ''${title}\n#+filetags: :code:\n:PROPERTIES:\n:CREATED: %U\n:END:\n")
            :unnarrowed t)))
        :bind (("C-c n l" . org-roam-buffer-toggle)
               ("C-c n f" . org-roam-node-find)
@@ -250,14 +249,6 @@
        :bind ("C-x g" . magit-status))
 
 
-     (use-package yasnippet
-       :config
-       (yas-global-mode 1)
-       (yas-reload-all))
-
-     (use-package yasnippet-snippets
-       :after yasnippet) 
-    
      (use-package ansible
        :hook (yaml-mode . ansible))
 

@@ -67,7 +67,7 @@ myStartupHook = do
     spawn "nitrogen --restore"  -- Restore wallpaper
     spawn "picom"               -- Start compositor
     spawn "dunst"               -- Start notification daemon
-    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 5 --transparent true --tint 0x2e3440 --height 20 --iconspacing 3"
+    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 3 --transparent true --tint 0x2e3440 --height 21 --iconspacing 4"
 
 
 -- Keybindings (i3-like where possible)
