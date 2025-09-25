@@ -79,9 +79,12 @@
       bind-key w list-windows
       bind-key , command-prompt -I "#W" "rename-window '%%'"
       
-      # Enable 24-bit color
-      set-option -ga terminal-overrides ",*256col*:Tc"
+      # Enable 24-bit color (true color) support
       set -g default-terminal "tmux-256color"
+      set -ga terminal-overrides ",alacritty:Tc"
+      set -ga terminal-overrides ",xterm-256color:Tc"
+      set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
+      set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours
       
       # Nord Theme Colors
       set -g status-style "bg=#3b4252,fg=#eceff4"
