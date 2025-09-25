@@ -12,6 +12,7 @@
     ./programs/virt-manager.nix
     ./programs/emacs.nix
     ./programs/nvim.nix
+    ./programs/tmux.nix
     ./programs/git.nix
     ./desktop/xmonad.nix
   ];
@@ -70,6 +71,7 @@
 
     # terminal & shell enhancement
     libvterm
+    tmux
 
     # Browsers
     firefox
