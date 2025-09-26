@@ -38,7 +38,7 @@
     terraform
     ansible
 
-    nil # nix lsp
+    nil
     yaml-language-server
     haskell-language-server
     ghc

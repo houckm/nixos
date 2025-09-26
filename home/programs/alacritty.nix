@@ -12,7 +12,7 @@
           y = 6;
         };
         decorations = "full";
-        opacity = 0.95;
+        opacity = 0.90;
         blur = true;
       };
 
@@ -40,7 +40,7 @@
           family = "JetBrains Mono Nerd Font";
           style = "Bold Italic";
         };
-        size = 12.0;
+        size = 13.0;
       };
 
       # Nord Color Scheme

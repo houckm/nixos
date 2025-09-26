@@ -64,6 +64,4 @@
       };
     };
   };
-
-  # Note: trayer is started via XMonad startup hook instead of service
 }
