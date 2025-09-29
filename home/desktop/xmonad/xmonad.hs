@@ -37,7 +37,7 @@ main = do
                           , ppHiddenNoWindows = xmobarColor "#3b4252" ""
                           , ppSep = " | "
                           }
-        , workspaces = ["1:term", "2:chrome", "3:emacs", "4:chat", "5:media", "6:virt", "7:qbittorent", "8:games", "9:discord"]
+        , workspaces = ["1:www", "2:emacs", "3:term", "4:discord", "5:vlc", "6:vm", "7:torrent", "8:steam"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 
@@ -52,10 +52,10 @@ myLayout = avoidStruts
 
 -- Window management rules
 myManageHook = composeAll
-    [ className =? "Google-chrome"  --> doShift "2:chrome"
-    , className =? "Emacs"          --> doShift "3:emacs"
-    , className =? "Discord"        --> doShift "9:discord"
-    , className =? "Virt-manager"   --> doShift "6:virt"
+    [ className =? "google-chrome"  --> doShift "1:www"
+    , className =? "Emacs"          --> doShift "2:emacs"
+    , className =? "Discord"        --> doShift "4:discord"
+    , className =? "Virt-manager"   --> doShift "6:vm"
     , className =? "Gimp"           --> doFloat
     , className =? "trayer"         --> doIgnore  -- Ignore trayer
     , isFullscreen                  --> doFullFloat
@@ -75,7 +75,7 @@ myKeys =
     [ -- Launching programs
       ("M-<Return>", spawn "alacritty")
     , ("M-p", spawn "dmenu_run -fn 'JetBrainsMono Nerd Font-10' -nb '#2e3440' -nf '#d8dee9' -sb '#88c0d0' -sf '#2e3440'")
-    , ("M-S-<Return>", spawn "google-chrome")
+    , ("M-c", spawn "google-chrome")
     
     -- Window management
     , ("M-S-q", kill)

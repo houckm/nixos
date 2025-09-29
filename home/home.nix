@@ -61,6 +61,7 @@
     blueman
     zoxide
     fastfetch
+    vlc
     
     # Network tools
     nmap
