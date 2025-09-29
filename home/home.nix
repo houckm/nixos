@@ -60,6 +60,7 @@
     eza
     blueman
     zoxide
+    fastfetch
     
     # Network tools
     nmap
