@@ -25,7 +25,54 @@
       enable = true;
       createDirectories = true;
     };
+
+    desktopEntries = {
+      twitter = {
+        name = "Twitter";
+        exec = "google-chrome-stable --app=https://twitter.com";
+        icon = "twitter";  # Uses system icon if available
+        categories = [ "Network" "WebBrowser" ];
+        comment = "Twitter Web App";
+      };
+      
+
+      claude = {
+      name = "Claude";
+      exec = "google-chrome-stable --app=https://claude.ai";
+      icon = "${config.home.homeDirectory}/.local/share/icons/claude.png";
+      categories = [ "Network" "WebBrowser" "Development" ];
+      comment = "Claude AI Assistant";
+      };
+
+      youtube = {
+        name = "YouTube";
+        exec = "google-chrome-stable --app=https://youtube.com";
+        icon = "youtube";
+        categories = [ "Network" "WebBrowser" "AudioVideo" ];
+        comment = "YouTube Web App";
+      };
+      
+      reddit = {
+      name = "Reddit";
+      exec = "google-chrome-stable --app=https://reddit.com";
+      icon = "reddit";
+      categories = [ "Network" "WebBrowser" ];
+      comment = "Reddit Web App";
+      };
+      # Add more as needed
+      gmail = {
+        name = "Gmail";
+        exec = "google-chrome-stable --app=https://mail.google.com";
+        icon = "gmail";
+        categories = [ "Network" "Email" ];
+        comment = "Gmail Web App";
+      };
+    };
   };
+
+
+  home.file.".local/share/icons/claude.png".source = ./assets/icons/claude.png;
+
 
   # Global packages not tied to specific programs
   home.packages = with pkgs; [
