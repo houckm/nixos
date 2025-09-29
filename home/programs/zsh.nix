@@ -15,6 +15,9 @@
       cat = "bat";
       v = "nvim";
       cd = "z";
+      e = "emacsclient -c -a 'emacs'";
+      ec = "emacsclient -c";
+      et = "emacsclient -t";  # Terminal mode
       cdi = "zi";
       cls = "clear";
       

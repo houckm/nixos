@@ -37,7 +37,7 @@ main = do
                           , ppHiddenNoWindows = xmobarColor "#3b4252" ""
                           , ppSep = " | "
                           }
-        , workspaces = ["1:www", "2:emacs", "3:term", "4:discord", "5:vlc", "6:vm", "7:torrent", "8:steam"]
+        , workspaces = ["1:term", "2:www", "3:emacs", "4:claude", "5:media", "6:virt", "7:misc", "8:games", "9:chat"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 
@@ -52,35 +52,46 @@ myLayout = avoidStruts
 
 -- Window management rules
 myManageHook = composeAll
-    [ className =? "google-chrome"  --> doShift "1:www"
-    , className =? "Emacs"          --> doShift "2:emacs"
-    , className =? "Discord"        --> doShift "4:discord"
-    , className =? "Virt-manager"   --> doShift "6:vm"
+    [ className =? "claude.ai"  --> doShift "4:claude"
+    , className =? "Emacs"          --> doShift "3:emacs"
+    , className =? "Discord"        --> doShift "9:discord"
+    , className =? "Virt-manager"   --> doShift "6:virt"
     , className =? "Gimp"           --> doFloat
-    , className =? "trayer"         --> doIgnore  -- Ignore trayer
+    , className =? "trayer"         --> doIgnore
     , isFullscreen                  --> doFullFloat
     , manageDocks
     ]
 
 -- Startup hook
 myStartupHook = do
-    spawn "nitrogen --restore"  -- Restore wallpaper
-    spawn "picom"               -- Start compositor
-    spawn "dunst"               -- Start notification daemon
-    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 2 --transparent true --tint 0x2e3440 --height 21 --iconspacing 4"
+    spawn "nitrogen --restore"
+    spawn "picom"
+    spawn "dunst"
+    --spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 3 --transparent true --tint 0x2e3440 --height 21 --iconspacing 4"
 
-
--- Keybindings (i3-like where possible)
+-- Keybindings
 myKeys =
     [ -- Launching programs
       ("M-<Return>", spawn "alacritty")
     , ("M-p", spawn "rofi -show drun")
-    , ("M-c", spawn "google-chrome")
+    , ("M-S-b", spawn "google-chrome")
+    
+    -- Web Apps
+    , ("M-S-t", spawn "google-chrome-stable --app=https://twitter.com")
+    , ("M-S-y", spawn "google-chrome-stable --app=https://youtube.com")
+    , ("M-S-g", spawn "google-chrome-stable --app=https://mail.google.com")
+    , ("M-S-r", spawn "google-chrome-stable --app=https://reddit.com")
+    , ("M-S-c", spawn "google-chrome-stable --app=https://claude.ai")
+    
+    -- Desktop Apps
+    , ("M-e", spawn "emacs")
+    , ("M-S-d", spawn "discord")
+    , ("M-v", spawn "virt-manager")
     
     -- Window management
     , ("M-S-q", kill)
     , ("M-<Space>", sendMessage NextLayout)
-    , ("M-f", sendMessage ToggleLayout)  -- Toggle fullscreen
+    , ("M-f", sendMessage ToggleLayout)
     
     -- Focus
     , ("M-j", windows W.focusDown)
@@ -100,9 +111,9 @@ myKeys =
     
     -- System
     , ("M-S-r", spawn "xmonad --recompile && xmonad --restart")
-    , ("M-S-e", io exitSuccess)  -- Exit XMonad
+    , ("M-S-e", io exitSuccess)
     
-    -- Screenshots (like i3)
+    -- Screenshots
     , ("<Print>", spawn "maim ~/Pictures/$(date +%s).png")
     , ("S-<Print>", spawn "maim -s ~/Pictures/$(date +%s).png")
     ]

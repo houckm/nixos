@@ -284,4 +284,11 @@
        :config (which-key-mode))
    '';
  };
+
+ services.emacs = {
+   enable = true;
+   client.enable = true;
+   defaultEditor = true;
+   socketActivation.enable = true;
+ };
 }
