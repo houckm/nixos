@@ -14,6 +14,7 @@
     ./programs/nvim.nix
     ./programs/tmux.nix
     ./programs/git.nix
+    ./programs/rofi.nix
     ./desktop/xmonad.nix
   ];
 

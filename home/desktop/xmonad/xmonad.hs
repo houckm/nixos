@@ -67,14 +67,14 @@ myStartupHook = do
     spawn "nitrogen --restore"  -- Restore wallpaper
     spawn "picom"               -- Start compositor
     spawn "dunst"               -- Start notification daemon
-    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 3 --transparent true --tint 0x2e3440 --height 21 --iconspacing 4"
+    spawn "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 2 --transparent true --tint 0x2e3440 --height 21 --iconspacing 4"
 
 
 -- Keybindings (i3-like where possible)
 myKeys =
     [ -- Launching programs
       ("M-<Return>", spawn "alacritty")
-    , ("M-p", spawn "dmenu_run -fn 'JetBrainsMono Nerd Font-10' -nb '#2e3440' -nf '#d8dee9' -sb '#88c0d0' -sf '#2e3440'")
+    , ("M-p", spawn "rofi -show drun")
     , ("M-c", spawn "google-chrome")
     
     -- Window management
@@ -105,7 +105,4 @@ myKeys =
     -- Screenshots (like i3)
     , ("<Print>", spawn "maim ~/Pictures/$(date +%s).png")
     , ("S-<Print>", spawn "maim -s ~/Pictures/$(date +%s).png")
-    
-    -- Trayer toggle
-    , ("M-t", spawn "pkill trayer || trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 5 --transparent true --tint 0x2e3440 --height 22 --iconspacing 3")
     ]
