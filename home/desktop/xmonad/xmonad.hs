@@ -56,6 +56,7 @@ myStartupHook = do
     spawn "nitrogen --restore"  -- Restore wallpaper
     spawn "picom"               -- Start compositor
     spawn "dunst"               -- Start notification daemon
+    spawn "polybar main &"
 
 -- Keybindings (i3-like where possible)
 myKeys =

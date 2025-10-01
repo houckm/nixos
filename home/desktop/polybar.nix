@@ -8,21 +8,25 @@
     config = {
       "bar/main" = {
         width = "100%";
-        height = 22;
+        height = 24;
         background = "#2e3440";
         foreground = "#d8dee9";
         
         font-0 = "JetBrainsMono Nerd Font:size=10;2";
+        font-1 = "JetBrainsMono Nerd Font:size=12;3";
         
-        modules-left = "xworkspaces";
+        modules-left = "xworkspaces xwindow";
         modules-center = "date";
-        modules-right = "cpu memory filesystem wlan eth";
+        modules-right = "pulseaudio cpu memory filesystem wlan eth";
         
         padding-right = 1;
         module-margin = 1;
         
         tray-position = "right";
         tray-padding = 2;
+        
+        cursor-click = "pointer";
+        cursor-scroll = "ns-resize";
       };
       
       "module/xworkspaces" = {
@@ -45,11 +49,42 @@
         label-empty-padding = 1;
       };
       
+      "module/xwindow" = {
+        type = "internal/xwindow";
+        label = "%title:0:60:...%";
+        label-foreground = "#8fbcbb";
+      };
+      
       "module/date" = {
         type = "internal/date";
         interval = 1;
-        date = "%A %H:%M";
-        label = "%date%";
+        date = "%a %b %d";
+        time = "%H:%M";
+        label = "%date% %time%";
+        
+        # Click to open Emacs org-agenda
+        click-left = "emacs --eval '(org-agenda-list)' &";
+      };
+      
+      "module/pulseaudio" = {
+        type = "internal/pulseaudio";
+        
+        format-volume = "<ramp-volume> <label-volume>";
+        label-volume = "%percentage%%";
+        
+        format-muted = "<label-muted>";
+        format-muted-prefix = "󰖁 ";
+        format-muted-prefix-foreground = "#bf616a";
+        label-muted = "muted";
+        label-muted-foreground = "#4c566a";
+        
+        ramp-volume-0 = "󰕿";
+        ramp-volume-1 = "󰖀";
+        ramp-volume-2 = "󰕾";
+        ramp-volume-foreground = "#88c0d0";
+        
+        # Click to open volume control
+        click-right = "pavucontrol &";
       };
       
       "module/cpu" = {
@@ -58,6 +93,9 @@
         format-prefix = " ";
         format-prefix-foreground = "#88c0d0";
         label = "%percentage:2%%";
+        
+        # Click to open btop
+        click-left = "alacritty -e btop &";
       };
       
       "module/memory" = {
@@ -66,6 +104,9 @@
         format-prefix = " ";
         format-prefix-foreground = "#88c0d0";
         label = "%percentage_used%%";
+        
+        # Click to open btop
+        click-left = "alacritty -e btop &";
       };
       
       "module/filesystem" = {
@@ -75,6 +116,9 @@
         format-mounted-prefix = " ";
         format-mounted-prefix-foreground = "#88c0d0";
         label-mounted = "%used%/%total%";
+        
+        # Click to open ranger
+        click-left = "alacritty -e ranger &";
       };
       
       "module/wlan" = {
@@ -84,8 +128,11 @@
         format-connected = "<label-connected>";
         format-connected-prefix = "󰖩 ";
         format-connected-prefix-foreground = "#88c0d0";
-        label-connected = "%downspeed%/%upspeed%";
+        label-connected = "%downspeed%  %upspeed%";
         format-disconnected = "";
+        
+        # Click to open network manager
+        click-left = "alacritty -e nmtui &";
       };
       
       "module/eth" = {
@@ -95,8 +142,11 @@
         format-connected = "<label-connected>";
         format-connected-prefix = "󰈀 ";
         format-connected-prefix-foreground = "#88c0d0";
-        label-connected = "%downspeed%/%upspeed%";
+        label-connected = "%downspeed%  %upspeed%";
         format-disconnected = "";
+        
+        # Click to open network manager
+        click-left = "alacritty -e nmtui &";
       };
     };
   };
