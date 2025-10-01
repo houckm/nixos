@@ -10,7 +10,7 @@
     shellAliases = {
       ll = "eza -la --header";
       la = "eza -la --header";
-      ls = "eza --header";
+      ls = "eza";
       grep = "rg";
       cat = "bat";
       v = "nvim";
