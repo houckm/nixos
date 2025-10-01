@@ -93,9 +93,9 @@
       "module/cpu" = {
         type = "internal/cpu";
         interval = 2;
-        format-prefix = " ";
-        format-prefix-foreground = "#88c0d0";
-        label = "%percentage:2%%";
+        format = "<label>";
+        label = " %percentage%%";
+        format-foreground = "#d8dee9";
         
         click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.btop}/bin/btop &";
       };
@@ -103,9 +103,9 @@
       "module/memory" = {
         type = "internal/memory";
         interval = 2;
-        format-prefix = " ";
-        format-prefix-foreground = "#88c0d0";
-        label = "%percentage_used%%";
+        format = "<label>";
+        label = " %percentage_used%%";
+        format-foreground = "#d8dee9";
         
         click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.btop}/bin/btop &";
       };
@@ -114,9 +114,9 @@
         type = "internal/fs";
         mount-0 = "/";
         interval = 30;
-        format-mounted-prefix = " ";
-        format-mounted-prefix-foreground = "#88c0d0";
-        label-mounted = "%used%/%total%";
+        format-mounted = "<label-mounted>";
+        label-mounted = " %used%/%total%";
+        format-mounted-foreground = "#d8dee9";
         
         click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.ranger}/bin/ranger &";
       };
@@ -126,10 +126,11 @@
         interface = "wlp13s0";
         interval = 3;
         format-connected = "<label-connected>";
-        format-connected-prefix = "󰖩 ";
-        format-connected-prefix-foreground = "#88c0d0";
-        label-connected = "%downspeed%  %upspeed%";
-        format-disconnected = "";
+        label-connected = "󰖩 %essid%";
+        format-connected-foreground = "#d8dee9";
+        format-disconnected = "<label-disconnected>";
+        label-disconnected = "󰖪 disconnected";
+        format-disconnected-foreground = "#bf616a";
         
         click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui &";
       };
@@ -139,9 +140,8 @@
         interface = "enp12s0";
         interval = 3;
         format-connected = "<label-connected>";
-        format-connected-prefix = "󰈀 ";
-        format-connected-prefix-foreground = "#88c0d0";
-        label-connected = "%downspeed%  %upspeed%";
+        label-connected = "󰈀 connected";
+        format-connected-foreground = "#d8dee9";
         format-disconnected = "";
         
         click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui &";
