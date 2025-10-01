@@ -8,8 +8,8 @@
     syntaxHighlighting.enable = true;
     
     shellAliases = {
-      ll = "eza -la --header";
-      la = "eza -la --header";
+      ll = "eza -la --header --icons";
+      la = "eza -la --header --icons";
       ls = "eza";
       grep = "rg";
       cat = "bat";
