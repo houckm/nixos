@@ -16,6 +16,7 @@
     ./programs/git.nix
     ./programs/rofi.nix
     ./desktop/xmonad.nix
+    ./desktop/polybar.nix
   ];
 
   # XDG directories
