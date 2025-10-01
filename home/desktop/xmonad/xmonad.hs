@@ -27,7 +27,7 @@ main = do
         , layoutHook  = myLayout
         , manageHook  = myManageHook
         , handleEventHook = handleEventHook def
-        , workspaces = ["1:term", "2:chrome", "3:emacs", "4:chat", "5:media", "6:virt", "7:qbittorent", "8:games", "9:discord"]
+        , workspaces = ["1:term", "2:chrome", "3:emacs", "4:claude", "5:vlc", "6:virt", "7:qbittorent", "8:steam", "9:discord"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 
@@ -62,7 +62,7 @@ myStartupHook = do
 myKeys =
     [ -- Launching programs
       ("M-<Return>", spawn "alacritty")
-    , ("M-p", spawn "dmenu_run -fn 'JetBrainsMono Nerd Font-10' -nb '#2e3440' -nf '#d8dee9' -sb '#88c0d0' -sf '#2e3440'")
+    , ("M-p", spawn "rofi -show drun")
     , ("M-S-<Return>", spawn "google-chrome")
     
     -- Window management

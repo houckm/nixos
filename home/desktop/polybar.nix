@@ -4,6 +4,9 @@
   services.polybar = {
     enable = true;
     script = "polybar main &";
+    package = pkgs.polybar.override {
+      pulseSupport = true;
+    };
     
     config = {
       "bar/main" = {
@@ -17,16 +20,18 @@
         
         modules-left = "xworkspaces xwindow";
         modules-center = "date";
-        modules-right = "pulseaudio cpu memory filesystem wlan eth";
+        modules-right = "pulseaudio cpu memory filesystem wlan eth tray";
         
         padding-right = 1;
         module-margin = 1;
         
-        tray-position = "right";
-        tray-padding = 2;
-        
         cursor-click = "pointer";
         cursor-scroll = "ns-resize";
+      };
+      
+      "module/tray" = {
+        type = "internal/tray";
+        tray-spacing = 8;
       };
       
       "module/xworkspaces" = {
@@ -62,8 +67,7 @@
         time = "%H:%M";
         label = "%date% %time%";
         
-        # Click to open Emacs org-agenda
-        click-left = "emacs --eval '(org-agenda-list)' &";
+        click-left = "${pkgs.emacs}/bin/emacs --eval '(org-agenda-list)' &";
       };
       
       "module/pulseaudio" = {
@@ -83,8 +87,7 @@
         ramp-volume-2 = "󰕾";
         ramp-volume-foreground = "#88c0d0";
         
-        # Click to open volume control
-        click-right = "pavucontrol &";
+        click-right = "${pkgs.pavucontrol}/bin/pavucontrol &";
       };
       
       "module/cpu" = {
@@ -94,8 +97,7 @@
         format-prefix-foreground = "#88c0d0";
         label = "%percentage:2%%";
         
-        # Click to open btop
-        click-left = "alacritty -e btop &";
+        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.btop}/bin/btop &";
       };
       
       "module/memory" = {
@@ -105,8 +107,7 @@
         format-prefix-foreground = "#88c0d0";
         label = "%percentage_used%%";
         
-        # Click to open btop
-        click-left = "alacritty -e btop &";
+        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.btop}/bin/btop &";
       };
       
       "module/filesystem" = {
@@ -117,8 +118,7 @@
         format-mounted-prefix-foreground = "#88c0d0";
         label-mounted = "%used%/%total%";
         
-        # Click to open ranger
-        click-left = "alacritty -e ranger &";
+        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.ranger}/bin/ranger &";
       };
       
       "module/wlan" = {
@@ -131,8 +131,7 @@
         label-connected = "%downspeed%  %upspeed%";
         format-disconnected = "";
         
-        # Click to open network manager
-        click-left = "alacritty -e nmtui &";
+        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui &";
       };
       
       "module/eth" = {
@@ -145,8 +144,7 @@
         label-connected = "%downspeed%  %upspeed%";
         format-disconnected = "";
         
-        # Click to open network manager
-        click-left = "alacritty -e nmtui &";
+        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui &";
       };
     };
   };

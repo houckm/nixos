@@ -109,6 +109,7 @@
     eza
     blueman
     zoxide
+    ranger
     fastfetch
     vlc
     
