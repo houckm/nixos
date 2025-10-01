@@ -27,6 +27,8 @@
         
         cursor-click = "pointer";
         cursor-scroll = "ns-resize";
+        
+        enable-ipc = true;
       };
       
       "module/tray" = {
@@ -67,7 +69,7 @@
         time = "%H:%M";
         label = "%date% %time%";
         
-        click-left = "${pkgs.emacs}/bin/emacs --eval '(org-agenda-list)' &";
+        click-left = "emacs --eval '(org-agenda-list)'";
       };
       
       "module/pulseaudio" = {
@@ -87,7 +89,7 @@
         ramp-volume-2 = "󰕾";
         ramp-volume-foreground = "#88c0d0";
         
-        click-right = "${pkgs.pavucontrol}/bin/pavucontrol &";
+        click-right = "pavucontrol";
       };
       
       "module/cpu" = {
@@ -97,7 +99,7 @@
         label = " %percentage%%";
         format-foreground = "#d8dee9";
         
-        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.btop}/bin/btop &";
+        click-left = "alacritty -e btop";
       };
       
       "module/memory" = {
@@ -107,7 +109,7 @@
         label = " %percentage_used%%";
         format-foreground = "#d8dee9";
         
-        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.btop}/bin/btop &";
+        click-left = "alacritty -e btop";
       };
       
       "module/filesystem" = {
@@ -118,7 +120,7 @@
         label-mounted = " %used%/%total%";
         format-mounted-foreground = "#d8dee9";
         
-        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.ranger}/bin/ranger &";
+        click-left = "alacritty -e ranger";
       };
       
       "module/wlan" = {
@@ -132,7 +134,7 @@
         label-disconnected = "󰖪 disconnected";
         format-disconnected-foreground = "#bf616a";
         
-        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui &";
+        click-left = "alacritty -e nmtui";
       };
       
       "module/eth" = {
@@ -144,7 +146,7 @@
         format-connected-foreground = "#d8dee9";
         format-disconnected = "";
         
-        click-left = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui &";
+        click-left = "alacritty -e nmtui";
       };
     };
   };
