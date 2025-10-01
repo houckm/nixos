@@ -8,9 +8,9 @@
     syntaxHighlighting.enable = true;
     
     shellAliases = {
-      ll = "eza -la";
-      la = "eza -la";
-      ls = "eza";
+      ll = "eza -la --header";
+      la = "eza -la --header";
+      ls = "eza --header";
       grep = "rg";
       cat = "bat";
       v = "nvim";
