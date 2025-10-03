@@ -16,9 +16,8 @@
       v = "nvim";
       cd = "z";
       e = "emacsclient -c -a 'emacs'";
-      ec = "emacsclient -c";
-      et = "emacsclient -t";  # Terminal mode
       cdi = "zi";
+      ff = "fastfetch";
       cls = "clear";
       
       # Git shortcuts
