@@ -63,7 +63,7 @@ myKeys =
     [ -- Launching programs
       ("M-<Return>", spawn "alacritty")
     , ("M-p", spawn "rofi -show drun")
-    , ("M-S-<Return>", spawn "google-chrome")
+    , ("M-S-<Return>", spawn "google-chrome-stable")
     
     -- Window management
     , ("M-S-q", kill)

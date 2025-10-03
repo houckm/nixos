@@ -308,7 +308,7 @@
     pyright          # Python LSP
     rust-analyzer    # Rust LSP
     marksman         # Markdown LSP
-    ansible-language-server  # Ansible LSP
+    ansible-lint
     yaml-language-server     # YAML LSP
     
     # Additional tools
