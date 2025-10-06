@@ -134,7 +134,7 @@
 
 
     # torrents
-    mullvad-vpn
+    #mullvad-vpn
     qbittorrent 
 
     # Fonts
