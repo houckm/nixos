@@ -53,6 +53,13 @@
         comment = "YouTube Web App";
       };
       
+      oreilly = {
+        name = "Oreilly";
+        exec = "google-chrome-stable --app=https://oreilly.com";
+        icon = "oreilly";
+        categories = [ "Network" "WebBrowser" "AudioVideo" ];
+        comment = "Oreilly Web App";
+      };
       reddit = {
       name = "Reddit";
       exec = "google-chrome-stable --app=https://reddit.com";
@@ -134,7 +141,7 @@
 
 
     # torrents
-    #mullvad-vpn
+    mullvad-vpn
     qbittorrent 
 
     # Fonts
