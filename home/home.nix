@@ -15,6 +15,7 @@
     ./programs/tmux.nix
     ./programs/git.nix
     ./programs/rofi.nix
+    ./programs/open-webui.nix
     ./desktop/xmonad.nix
     ./desktop/polybar.nix
   ];
@@ -54,11 +55,11 @@
       };
       
       oreilly = {
-        name = "Oreilly";
-        exec = "google-chrome-stable --app=https://oreilly.com";
+        name = "O'Reilly";
+        exec = "google-chrome-stable --app=https://learning.oreilly.com/home/";
         icon = "oreilly";
         categories = [ "Network" "WebBrowser" "AudioVideo" ];
-        comment = "Oreilly Web App";
+        comment = "O'Reilly Web App";
       };
       reddit = {
       name = "Reddit";
@@ -132,6 +133,8 @@
     libvterm
     tmux
 
+    ollama
+
     # Browsers
     firefox
     google-chrome
@@ -141,7 +144,7 @@
 
 
     # torrents
-    mullvad-vpn
+    #mullvad-vpn
     qbittorrent 
 
     # Fonts

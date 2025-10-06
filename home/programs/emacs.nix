@@ -134,7 +134,8 @@
      ;; Theme
      (use-package doom-themes
        :config
-       (load-theme 'leuven t)
+       (load-theme 'doom-nord-aurora t)
+       ;;(load-theme 'leuven t)
        (doom-themes-org-config))
      
      (use-package doom-modeline

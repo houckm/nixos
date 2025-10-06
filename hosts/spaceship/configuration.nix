@@ -30,6 +30,12 @@
   # USB audio interface support
   boot.kernelModules = [ "snd-usb-audio" ];
 
+
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";  # You have NVIDIA GPU
+  };
+
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
