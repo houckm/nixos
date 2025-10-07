@@ -20,14 +20,14 @@ import System.Exit
 main = do
     xmonad $ ewmhFullscreen $ ewmh $ docks $ def
         { terminal    = "alacritty"
-        , modMask     = mod1Mask
+        , modMask     = mod4Mask
         , borderWidth = 4
         , normalBorderColor  = "#3b4252"
         , focusedBorderColor = "#88c0d0"
         , layoutHook  = myLayout
         , manageHook  = myManageHook
         , handleEventHook = handleEventHook def
-        , workspaces = ["1:term", "2:chrome", "3:emacs", "4:claude", "5:vlc", "6:virt", "7:qbittorent", "8:steam", "9:discord"]
+        , workspaces = ["1:term", "2:chrome", "3:emacs", "4:claude", "5:youtube", "6:vm", "7:torrent", "8:steam", "9:discord"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 
