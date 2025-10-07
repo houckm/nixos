@@ -16,7 +16,7 @@
      doom-themes
      doom-modeline
      all-the-icons
-     org-bullets
+     org-superstar
      
      # Completion & Navigation
      company
