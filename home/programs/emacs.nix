@@ -188,9 +188,15 @@
      (require 'org-tempo) 
 
      ;; Org bullets
-     (use-package org-bullets
-       :hook (org-mode . org-bullets-mode))
-     
+;;     (use-package org-bullets
+ ;;      :hook (org-mode . org-bullets-mode))
+
+     (use-package org-superstar
+         :hook (org-mode . org-superstar-mode)
+         :custom
+     (org-superstar-headline-bullets-list '("◉" "○" "◈" "◇" "▣" "□"))
+     (org-superstar-item-bullet-alist '((?- . ?•) (?+ . ?➤) (?* . ?★))))
+
      ;; Org-journal
      (use-package org-journal
        :custom
@@ -284,12 +290,5 @@
      (use-package which-key
        :config (which-key-mode))
    '';
- };
-
- services.emacs = {
-   enable = true;
-   client.enable = true;
-   defaultEditor = true;
-   socketActivation.enable = true;
  };
 }

@@ -15,7 +15,7 @@
     ./programs/tmux.nix
     ./programs/git.nix
     ./programs/rofi.nix
-    ./programs/open-webui.nix
+    #./programs/open-webui.nix
     ./desktop/xmonad.nix
     ./desktop/polybar.nix
   ];

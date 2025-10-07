@@ -16,6 +16,8 @@
 
   networking.hostName = "spaceship"; # Define your hostname.
 
+  virtualisation.docker.enable = true;
+
   # Audio
   security.rtkit.enable = true;
   services.pipewire = {
@@ -34,6 +36,7 @@
   services.ollama = {
     enable = true;
     acceleration = "cuda";  # You have NVIDIA GPU
+    host = "0.0.0.0";
   };
 
   # Bluetooth
@@ -46,7 +49,7 @@
   services.blueman.enable = true;
 
   # mullvad-vpn
-  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.enable = false;
 
   # Steam
   programs.steam = {
@@ -144,7 +147,7 @@
   users.users.hunter = {
     isNormalUser = true;
     description = "Hunter Houck";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -214,7 +217,7 @@
   security.pam.sshAgentAuth.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 5901 5902 8080];
+  networking.firewall.allowedTCPPorts = [ 5901 5902 8080 3000];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
