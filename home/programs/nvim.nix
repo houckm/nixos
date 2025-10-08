@@ -36,6 +36,7 @@
         p.yaml
         p.vim
         p.vimdoc
+        p.org
       ]))
       
       # LSP & completion
@@ -60,6 +61,9 @@
       # Markdown support
       markdown-preview-nvim
       render-markdown-nvim
+      
+      # Org mode support
+      orgmode
       
       # Additional useful plugins
       comment-nvim
@@ -146,16 +150,22 @@
       })
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
       
-      -- LSP Configuration
-      local lspconfig = require('lspconfig')
+      -- Org mode
+      require('orgmode').setup({
+        org_agenda_files = {'~/org/**/*', '~/org-roam/**/*'},
+        org_default_notes_file = '~/org/notes.org',
+      })
+      
+      -- LSP Configuration (updated API)
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       
-      -- Enable language servers (removed typescript)
+      -- Enable language servers
       local servers = { 'nil_ls', 'pyright', 'rust_analyzer', 'marksman' }
       for _, lsp in ipairs(servers) do
-        lspconfig[lsp].setup {
+        vim.lsp.config[lsp] = {
           capabilities = capabilities,
         }
+        vim.lsp.enable(lsp)
       end
       
       -- LSP keymaps
@@ -195,6 +205,7 @@
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'orgmode' },
         }, {
           { name = 'buffer' },
           { name = 'path' },
