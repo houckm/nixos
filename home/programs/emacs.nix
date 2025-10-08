@@ -69,6 +69,9 @@
      (set-face-attribute 'default nil
                          :font "JetBrainsMono Nerd Font"
                          :height 140)
+
+     (add-hook 'org-mode-hook 'visual-line-mode)
+
      
      (require 'use-package)
      (setq use-package-always-ensure nil)
