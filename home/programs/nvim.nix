@@ -36,7 +36,6 @@
         p.yaml
         p.vim
         p.vimdoc
-        p.org
       ]))
       
       # LSP & completion
