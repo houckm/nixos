@@ -141,7 +141,12 @@
   defaultSession = "none+xmonad";
   };
 
-  services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
+
+  services.displayManager.sddm = {
+  enable = true;
+  theme = "astronaut";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.hunter = {
@@ -175,6 +180,10 @@
      htop
      tree
      unzip
+     sddm-astronaut 
+
+
+
 
      # System tools
      lshw

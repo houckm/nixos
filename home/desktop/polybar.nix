@@ -69,7 +69,7 @@
         time = "%H:%M";
         label = "%date% %time%";
         
-        click-left = "emacs --eval '(org-agenda-list)'";
+        #        click-left = "emacs --eval '(org-agenda-list)'";
       };
       
       "module/pulseaudio" = {
@@ -99,7 +99,7 @@
         label = " %percentage%%";
         format-foreground = "#d8dee9";
         
-        click-left = "alacritty -e btop";
+        #        click-left = "alacritty -e btop";
       };
       
       "module/memory" = {
@@ -109,7 +109,7 @@
         label = " %percentage_used%%";
         format-foreground = "#d8dee9";
         
-        click-left = "alacritty -e btop";
+        # click-left = "alacritty -e btop";
       };
       
       "module/filesystem" = {
@@ -120,7 +120,7 @@
         label-mounted = " %used%/%total%";
         format-mounted-foreground = "#d8dee9";
         
-        click-left = "alacritty -e ranger";
+        # click-left = "alacritty -e ranger";
       };
       
       "module/wlan" = {
@@ -134,7 +134,7 @@
         label-disconnected = "󰖪 disconnected";
         format-disconnected-foreground = "#bf616a";
         
-        click-left = "alacritty -e nmtui";
+        #click-left = "alacritty -e nmtui";
       };
       
       "module/eth" = {
@@ -146,7 +146,7 @@
         format-connected-foreground = "#d8dee9";
         format-disconnected = "";
         
-        click-left = "alacritty -e nmtui";
+        #click-left = "alacritty -e nmtui";
       };
     };
   };

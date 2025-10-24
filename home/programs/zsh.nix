@@ -15,7 +15,7 @@
       cat = "bat";
       v = "nvim";
       cd = "z";
-      e = "emacsclient -c -a 'emacs'";
+      #e = "emacsclient -c -a 'emacs'";
       cdi = "zi";
       ff = "fastfetch";
       cls = "clear";
@@ -28,7 +28,7 @@
       gl = "git pull";
       
       # NixOS shortcuts
-      switch = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      switch = "sudo nixos-rebuild switch --flake ~/nixos";
     };
     
     history = {
