@@ -36,16 +36,13 @@
         categories = [ "Network" "WebBrowser" ];
         comment = "Twitter Web App";
       };
-      
-
       claude = {
       name = "Claude";
       exec = "google-chrome-stable --app=https://claude.ai";
-      icon = "${config.home.homeDirectory}/.local/share/icons/claude.png";
+      icon = "claude";
       categories = [ "Network" "WebBrowser" "Development" ];
       comment = "Claude AI Assistant";
       };
-
       youtube = {
         name = "YouTube";
         exec = "google-chrome-stable --app=https://youtube.com";
@@ -53,7 +50,6 @@
         categories = [ "Network" "WebBrowser" "AudioVideo" ];
         comment = "YouTube Web App";
       };
-      
       oreilly = {
         name = "O'Reilly";
         exec = "google-chrome-stable --app=https://learning.oreilly.com/home/";
@@ -68,7 +64,6 @@
       categories = [ "Network" "WebBrowser" ];
       comment = "Reddit Web App";
       };
-      # Add more as needed
       gmail = {
         name = "Gmail";
         exec = "google-chrome-stable --app=https://mail.google.com";
@@ -78,10 +73,6 @@
       };
     };
   };
-
-
-  home.file.".local/share/icons/claude.png".source = ./assets/icons/claude.png;
-
 
   # Global packages not tied to specific programs
   home.packages = with pkgs; [
@@ -133,8 +124,6 @@
     libvterm
     tmux
 
-    ollama
-
     # Browsers
     firefox
     google-chrome
@@ -144,7 +133,7 @@
 
 
     # torrents
-    #mullvad-vpn
+    mullvad-vpn
     qbittorrent 
 
     # Fonts

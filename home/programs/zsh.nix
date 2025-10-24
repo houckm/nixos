@@ -47,6 +47,9 @@
         "colored-man-pages"
         "extract"
         "command-not-found"
+        "systemd"
+        "ssh"
+        "terraform"
         "ansible"
       ];
     };
