@@ -16,6 +16,10 @@
 
   networking.hostName = "spaceship"; # Define your hostname.
 
+  networking.extraHosts = ''
+  192.168.122.224 rhcsa1.example.local rhcsa1
+  '';
+
   virtualisation.docker.enable = true;
 
   # Audio
@@ -31,13 +35,6 @@
 
   # USB audio interface support
   boot.kernelModules = [ "snd-usb-audio" ];
-
-
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";  # You have NVIDIA GPU
-    host = "0.0.0.0";
-  };
 
   # Bluetooth
   hardware.bluetooth = {
@@ -128,7 +125,6 @@
     variant = "";
   };
 
-
   services.xserver = {
   enable = true;
   windowManager.xmonad = {
@@ -140,8 +136,6 @@
   services.displayManager = {
   defaultSession = "none+xmonad";
   };
-
-  # services.xserver.displayManager.lightdm.enable = true;
 
   services.displayManager.sddm = {
   enable = true;
@@ -181,9 +175,6 @@
      tree
      unzip
      sddm-astronaut 
-
-
-
 
      # System tools
      lshw

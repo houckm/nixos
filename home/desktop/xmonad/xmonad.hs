@@ -20,14 +20,14 @@ import System.Exit
 main = do
     xmonad $ ewmhFullscreen $ ewmh $ docks $ def
         { terminal    = "alacritty"
-        , modMask     = mod4Mask
+        , modMask     = mod1Mask
         , borderWidth = 4
         , normalBorderColor  = "#3b4252"
         , focusedBorderColor = "#88c0d0"
         , layoutHook  = myLayout
         , manageHook  = myManageHook
         , handleEventHook = handleEventHook def
-        , workspaces = ["1:term", "2:chrome", "3:emacs", "4:claude", "5:youtube", "6:vm", "7:torrent", "8:steam", "9:discord"]
+        , workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
         , startupHook = myStartupHook
         } `additionalKeysP` myKeys
 
@@ -42,10 +42,10 @@ myLayout = avoidStruts
 
 -- Window management rules
 myManageHook = composeAll
-    [ className =? "Google-chrome"  --> doShift "2:chrome"
-    , className =? "Emacs"          --> doShift "3:emacs"
-    , className =? "Discord"        --> doShift "9:discord"
-    , className =? "Virt-manager"   --> doShift "6:virt"
+    [ className =? "Google-chrome"  --> doShift "2"
+    , className =? "Emacs"          --> doShift "3"
+    , className =? "Discord"        --> doShift "9"
+    , className =? "Virt-manager"   --> doShift "6"
     , className =? "Gimp"           --> doFloat
     , isFullscreen                  --> doFullFloat
     , manageDocks
