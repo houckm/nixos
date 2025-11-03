@@ -4,7 +4,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";  # Change to your actual disk
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -15,6 +15,13 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+              };
+            };
+            swap = {
+              size = "8G";  # Adjust based on RAM
+              content = {
+                type = "swap";
+                resumeDevice = true;
               };
             };
             root = {
