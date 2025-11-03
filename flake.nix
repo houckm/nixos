@@ -6,9 +6,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     claude-code.url = "github:sadjow/claude-code-nix";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, claude-code, ... }: {
+  outputs = { nixpkgs, home-manager, claude-code, disko, ... }: {
     nixosConfigurations.spaceship = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
