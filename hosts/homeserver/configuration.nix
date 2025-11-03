@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -12,8 +11,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-
-  # Networking
+# Networking
   networking = {
     hostName = "homeserver";
     networkmanager.enable = true;
@@ -34,6 +32,9 @@
       allowedTCPPorts = [ 22 ];
     };
   };
+
+  # Allow wheel group to use sudo without password
+  security.sudo.wheelNeedsPassword = false;
 
   # Localization
   time.timeZone = "America/Chicago";
@@ -92,8 +93,7 @@
   # Diagnostics
   lsof  # List open files
   strace  # System call tracing
-  
-;
+  ];  
 
   # Nix settings
   nix.settings = {
