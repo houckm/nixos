@@ -15,7 +15,6 @@
       cat = "bat";
       v = "nvim";
       cd = "z";
-      #e = "emacsclient -c -a 'emacs'";
       cdi = "zi";
       ff = "fastfetch";
       cls = "clear";

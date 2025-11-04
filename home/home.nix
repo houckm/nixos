@@ -28,13 +28,6 @@
     };
 
     desktopEntries = {
-      twitter = {
-        name = "Twitter";
-        exec = "google-chrome-stable --app=https://twitter.com";
-        icon = "twitter";  # Uses system icon if available
-        categories = [ "Network" "WebBrowser" ];
-        comment = "Twitter Web App";
-      };
       claude = {
       name = "Claude";
       exec = "google-chrome-stable --app=https://claude.ai";
@@ -97,7 +90,6 @@
     cmake
     kiro
 
-
     # System monitoring & performance
     btop
     fd
@@ -127,12 +119,10 @@
     firefox
     google-chrome
 
-    # communication
+    obs-studio
     discord
 
-
     # torrents
-    mullvad-vpn
     qbittorrent 
 
     # Fonts
