@@ -10,7 +10,7 @@
     ./programs/starship.nix
     ./programs/alacritty.nix
     ./programs/virt-manager.nix
-    ./programs/emacs.nix
+    #./programs/emacs.nix
     ./programs/nvim.nix
     ./programs/tmux.nix
     ./programs/git.nix

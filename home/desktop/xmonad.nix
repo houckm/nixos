@@ -13,10 +13,10 @@
   };
 
   # Status bar
-  programs.xmobar = {
-    enable = true;
-    extraConfig = builtins.readFile ./xmonad/xmobarrc;
-  };
+  #programs.xmobar = {
+    #enable = true;
+    #extraConfig = builtins.readFile ./xmonad/xmobarrc;
+    #};
 
   # XMonad-related packages
   home.packages = with pkgs; [
