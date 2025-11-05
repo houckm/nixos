@@ -29,15 +29,13 @@
       setw -g pane-base-index 1
       
       # Remap prefix from 'C-b' to 'C-a'
-      unbind C-b
-      set-option -g prefix C-a
-      bind-key C-a send-prefix
+      # unbind C-b
+      # set-option -g prefix C-a
+      # bind-key C-a send-prefix
       
       # Split panes using different keys (since | is problematic)
-      bind v split-window -h -c "#{pane_current_path}"  # vertical split
-      bind s split-window -v -c "#{pane_current_path}"  # horizontal split
-      unbind '"'
-      unbind %
+      bind % split-window -h -c "#{pane_current_path}"  # vertical split
+      bind '"' split-window -v -c "#{pane_current_path}"  # horizontal split
       
       # Create new window with current path
       bind c new-window -c "#{pane_current_path}"
@@ -148,7 +146,7 @@
       yank
       
       # Better pane management
-      pain-control
+      # pain-control
       
       # Prefix highlight
       {
