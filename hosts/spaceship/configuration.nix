@@ -18,6 +18,7 @@
 
   networking.extraHosts = ''
   192.168.122.224 rhcsa1.example.local rhcsa1
+  192.168.122.114 rhcsa2.example.local rhcsa2
   '';
 
   virtualisation.docker.enable = true;
@@ -29,7 +30,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # Optional: Enable JACK applications
     jack.enable = true;
   };
 
@@ -44,9 +44,6 @@
   
   # Enable Bluetooth manager service
   services.blueman.enable = true;
-
-  # mullvad-vpn
-  services.mullvad-vpn.enable = false;
 
   # Steam
   programs.steam = {
@@ -194,8 +191,6 @@
      # steam
      protonup-qt
 
-     obs-studio
-
      # Text Processing
      jq
      yq-go
@@ -224,12 +219,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.05";
 
 }
