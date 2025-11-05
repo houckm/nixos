@@ -145,9 +145,6 @@
       # Better copy/paste
       yank
       
-      # Better pane management
-      # pain-control
-      
       # Prefix highlight
       {
         plugin = prefix-highlight;
