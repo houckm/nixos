@@ -34,8 +34,8 @@
       # bind-key C-a send-prefix
       
       # Split panes using different keys (since | is problematic)
-      bind % split-window -h -c "#{pane_current_path}"  # vertical split
-      bind '"' split-window -v -c "#{pane_current_path}"  # horizontal split
+      # bind % split-window -h -c "#{pane_current_path}"  # vertical split
+      # bind '"' split-window -v -c "#{pane_current_path}"  # horizontal split
       
       # Create new window with current path
       bind c new-window -c "#{pane_current_path}"
