@@ -3,7 +3,15 @@
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
+
+    # Common modules
+    ../../modules/common
+
+    # Service modules
+    ../../modules/services/ssh.nix
     ./services/docker.nix
+    ./services/backup.nix
+    ./services/monitoring.nix
   ];
 
   # Boot
@@ -36,18 +44,8 @@
   # Allow wheel group to use sudo without password
   security.sudo.wheelNeedsPassword = false;
 
-  # Localization
-  time.timeZone = "America/Chicago";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  # Services
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      PermitRootLogin = "no";
-    };
-  };
+  # Override SSH settings for homeserver (disable password auth)
+  services.openssh.settings.PasswordAuthentication = false;
 
   # Users
   users.users.hunter = {
@@ -60,53 +58,20 @@
     ];
   };
 
-  # System packages
+  # Homeserver-specific packages (common packages are in modules/common)
   environment.systemPackages = with pkgs; [
-  vim
-  nano  # For users less comfortable with vim
-  
-  # Version control
-  git
-  
-  # System monitoring
-  htop
-  btop  # Modern htop alternative
-  iotop  # Disk I/O monitoring
-  
-  # Network tools
-  wget
-  curl
-  nmap  # Network scanning
-  iperf3  # Network performance testing
-  tcpdump  # Packet capture
-  
-  # System utilities
-  tmux
-  rsync  # File syncing
-  tree  # Directory visualization
-  ncdu  # Disk usage analyzer
-  
-  # File utilities
-  unzip
-  zip
-  
-  # Diagnostics
-  lsof  # List open files
-  strace  # System call tracing
-  ];  
-
-  # Nix settings
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
-  };
-  
-  # Automatic garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
+    vim
+    nano
+    tmux
+    ncdu
+    zip
+    lsof
+    strace
+    nmap
+    iperf3
+    tcpdump
+    iotop
+  ];
 
   system.stateVersion = "25.05";
 }
