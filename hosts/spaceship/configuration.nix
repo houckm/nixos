@@ -8,6 +8,18 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Common modules
+      ../../modules/common
+
+      # Hardware modules
+      ../../modules/hardware/nvidia.nix
+      ../../modules/hardware/audio.nix
+      ../../modules/hardware/bluetooth.nix
+
+      # Service modules
+      ../../modules/services/ssh.nix
+      ../../modules/services/gaming.nix
     ];
 
   # Bootloader.
@@ -23,98 +35,9 @@
 
   virtualisation.docker.enable = true;
 
-  # Audio
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  # USB audio interface support
-  boot.kernelModules = [ "snd-usb-audio" ];
-
-  # Bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  
-  # Enable Bluetooth manager service
-  services.blueman.enable = true;
-
-  # Steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server
-  };
-  
-  # Optional: Enable GameMode for better performance
-  programs.gamemode.enable = true;
-
-  # nvidia 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-  # Modesetting is required.
-    modesetting.enable = true;
-
-  # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-  # Enable this if you have graphical corruption issues or application crashes after waking
-  # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
-  # of just the bare essentials.
-    powerManagement.enable = false;
-
-  # Fine-grained power management. Turns off GPU when not in use.
-  # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-  # Use the NVidia open source kernel module (not to be confused with the
-  # independent nouveau driver).
-  # Support is limited to the Turing and later architectures. Full list of 
-  # supported GPUs is at: 
-  # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
-  # Only available from driver 515.43.04+
-  # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-  # Enable the Nvidia settings menu,
-  # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-  # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  # package = config.boot.kernelPackages.nvidiaPackages.stable;
- };
-
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/Chicago";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -158,66 +81,18 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Spaceship-specific packages (common packages are in modules/common)
   environment.systemPackages = with pkgs; [
-     # Core utilities
-     wget
-     git
-     curl
-     htop
-     tree
-     unzip
-     sddm-astronaut 
-
-     # System tools
+     sddm-astronaut
      lshw
      usbutils
      pciutils
      pavucontrol
-
-     # File Management
-     rsync
-     fd
-     ripgrep
-
-     # Development
      gnumake
-     gcc
-
-     # steam
-     protonup-qt
-
-     # Text Processing
-     jq
-     yq-go
-
   ];
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-      enable = true;
-      settings = {
-      PasswordAuthentication = true;
-      PermitRootLogin = "no";
-    };
-  };
-
-  # Keep system-level SSH security in configuration.nix
-  security.pam.sshAgentAuth.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 5901 5902 8080 3000];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   system.stateVersion = "25.05";
 
