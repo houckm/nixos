@@ -5,7 +5,7 @@
     enable = true;
     
     # SSH agent configuration
-    startAgent = true;
+    # startAgent = true;
     
     # Global SSH client configuration
     extraConfig = ''

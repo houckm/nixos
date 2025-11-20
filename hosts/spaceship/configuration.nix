@@ -29,7 +29,7 @@
   networking.hostName = "spaceship"; # Define your hostname.
 
   networking.extraHosts = ''
-  192.168.122.224 rhcsa1.example.local rhcsa1
+  192.168.122.113 rhcsa1.example.local rhcsa1
   192.168.122.114 rhcsa2.example.local rhcsa2
   '';
 

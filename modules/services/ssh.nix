@@ -11,5 +11,5 @@
   };
 
   # Keep system-level SSH security
-  security.pam.sshAgentAuth.enable = true;
+  # security.pam.sshAgentAuth.enable = true;
 }
