@@ -3,38 +3,40 @@
 {
   programs.ssh = {
     enable = true;
-    
+    enableDefaultConfig = false;
+
     # SSH agent configuration
     # startAgent = true;
-    
-    # Global SSH client configuration
-    extraConfig = ''
-      # Keep connections alive
-      ServerAliveInterval 60
-      ServerAliveCountMax 10
-      
-      # Connection multiplexing (faster subsequent connections)
-      ControlMaster auto
-      ControlPath ~/.ssh/sockets/%r@%h:%p
-      ControlPersist 10m
-      
-      # Security settings
-      HashKnownHosts yes
-      VerifyHostKeyDNS yes
-      
-      # Key preferences (prioritize Ed25519)
-      PubkeyAcceptedAlgorithms +ssh-ed25519,rsa-sha2-512,rsa-sha2-256
-    '';
-    
+
     # Host-specific configurations
     matchBlocks = {
+      # Default host configuration (applies to all hosts)
+      "*" = {
+        # Keep connections alive
+        serverAliveInterval = 60;
+        serverAliveCountMax = 10;
+
+        # Connection multiplexing (faster subsequent connections)
+        controlMaster = "auto";
+        controlPath = "~/.ssh/sockets/%r@%h:%p";
+        controlPersist = "10m";
+
+        # Security settings
+        hashKnownHosts = true;
+
+        extraOptions = {
+          VerifyHostKeyDNS = "yes";
+          PubkeyAcceptedAlgorithms = "+ssh-ed25519,rsa-sha2-512,rsa-sha2-256";
+        };
+      };
+
       "github.com" = {
         hostname = "github.com";
         user = "hunter";
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-      
+
       # Add other hosts as needed
       # "myserver" = {
       #   hostname = "example.com";

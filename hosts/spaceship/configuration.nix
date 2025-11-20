@@ -81,6 +81,11 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  # Vagrant configuration
+  virtualisation.libvirtd.qemu = {
+    package = pkgs.qemu_kvm;
+  };
+
   # Spaceship-specific packages (common packages are in modules/common)
   environment.systemPackages = with pkgs; [
      sddm-astronaut
@@ -89,6 +94,10 @@
      pciutils
      pavucontrol
      gnumake
+
+     # Virtualization tools
+     vagrant
+     qemu
   ];
 
   # Open ports in the firewall.
